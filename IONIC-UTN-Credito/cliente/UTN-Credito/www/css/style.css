@@ -1,0 +1,144 @@
+
+/********************/
+/* Menu customizado */
+/********************/
+
+/*borde bottom para item perfil en menu*/
+.item-menu-perfil {
+  border-bottom: 1px solid #3f4041 !important;
+}
+
+
+/*custom is class added to ion-content*/
+.custom {
+  background-color: #3f4041 !important; /* This sets the background color*/
+ }
+ 
+/*Set the background to transparent for ion-item*/
+.custom .item {
+  background-color: transparent;
+  border:none;   
+  border-top: 3px solid;   
+  border-bottom:2px solid;   
+  border-color: #666;
+  color: white;
+}
+ 
+/*Changes the border for the last item*/
+/*.custom .item:first-child {
+  border-bottom: 1px solid #666;
+  background-color: #3f4041;
+  color:white !important;
+}*/
+.custom .item:last-child {
+  border-bottom: 1px solid #666;
+  background-color: #3f4041;
+  color:white;
+}
+ 
+.custom .item-complex .item-content, .dark .item-radio .item-content {
+  background-color: transparent;
+}
+ 
+/*Just makes the type white*/
+.custom h2,
+.custom h3,
+.custom p,
+.custom a {
+  color: white;  /*Text color for each item, overrides the color property above*/
+}
+
+/****************/
+/* PARA CREDITO */
+/****************/
+.credito-text {
+  height: 225px;
+  margin-top: 2px;
+  padding: .5em .5em .5em .5em; 
+  background-color: #92DD5A;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  text-align:center;
+
+}
+
+.credito-name{
+  margin-right: -1em;
+  margin-bottom: .75em;
+  margin-left: -1em;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: .75em;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.credito-title {
+  color: white;
+  font-size: 11px;
+}
+
+.credito-saldo {
+  padding:10px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  border: 8px solid #b6ff7f;
+  border-radius: 10px;
+}
+
+/******************/
+/* PARA HISTORIAL */
+/******************/
+.historial-text {
+  height: 175px;
+  margin-top: 0px;
+  padding: 10px; 
+  background-color: #387ef5;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  text-align:center;
+}
+
+.historial-title {
+  width: 100%;
+  text-align: center; 
+  background-color: #85b0fb; 
+  padding: 5px;
+}
+
+.historial-sub-title {
+  width:100%; 
+  text-align:center; 
+  padding: 5px 0px 0px 0px; 
+  margin: 0px 0px 0px 0px;
+  border: 2px solid #387ef5; 
+  text-transform: uppercase; 
+  background-color: #387ef5;
+  opacity: .75;
+}
+
+.historial-sub-title h5{
+  color: white;
+}
+
+/********************/
+/* PARA IONIC POPUP */
+/********************/
+.popup-title {
+  color: #387ef5;
+}
+
+/********************/
+/* CLASES VARIAS */
+/********************/
+.margin-0 {
+  margin: 0 !important;
+}
+
+.padding-t-b-0 {
+  padding-top: 1px !important;
+  padding-bottom: 1px !important;
+}
+
+
+

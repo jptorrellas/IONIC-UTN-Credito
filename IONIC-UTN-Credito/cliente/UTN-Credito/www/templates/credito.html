@@ -1,0 +1,42 @@
+<ion-view view-title="Mi crédito">
+  <ion-content ng-controller="CreditoCtrl">
+    
+	<ion-refresher pulling-text="Suelte para actualizar saldo"
+        refreshing-text="actualizando..."
+        refreshing-icon="ion-load-c"
+        pulling-icon="ion-ios-arrow-thin-down"
+        on-refresh="doRefresh()">
+    </ion-refresher>  
+    <div class="credito-text">
+	  	<div class="credito-saldo">
+	  		<h4 style="color:white;">Su saldo actual es de: </h4><h1 style="color:white;">${{usuario.credito}}</h1>
+	  	</div>
+
+	    <h1 class="credito-name">ULTIMA ACTUALIZACIÓN DE SALDO:</h1>
+	    <span class="credito-title">{{usuario.fecha_update_saldo}}</span>
+	</div>
+
+	<div class="item">
+		<div class="item" style="border-radius:10px; padding:10px; margin-bottom: 20px;">
+			<div ng-hide="cboTarjestasHide">
+				<h6><i class="ion-card"></i>&nbspSeleccione tarjeta:</h6>
+				<label class="item item-input item-select">
+					<div class="input-label" style="width:0px;"></div>
+					<select ng-model="cboTarjetas">
+						<option value="ABC50pE">ABC50pE</option>
+						<option value="AUC50pQ">AUC50pQ</option>
+						<option value="ZU100bW">ZU100bW</option>
+						<option value="VR100nT">VR100nT</option>
+					</select>
+				</label>
+			</div>
+			<button class="button button-block button-positive" ng-click="recargaCredito()" style="line-height: 20px; padding: 5px; margin: 5px 0px 0px 0px;"><span class="ion-ios-barcode-outline"><br>Cargar crédito</span></button>
+		</div>
+		<div class="item" style="border-radius:10px; padding:10px;">			
+			<h6><i class="ion-person"></i>&nbspSeleccione usuario receptor:</h6><label class="item item-input item-select"><div class="input-label" style="width:0px;"></div><select ng-model="usuarioReceptorSeleccionado" ng-options="usuario as usuario.mail for usuario in listaUsuariosReceptoresJSON track by usuario.id" ng-change="activaBotones()" ng-click="traeUsuariosReceptores()"><!-- options dinamicas traídas de bd --></select></label>
+
+			<button class="button button-block button-assertive" ng-disabled="btnLoginDisabled" ng-click="pasaCredito()" style="line-height: 20px; padding: 5px; margin: 5px 0px 0px 0px;"><span class="ion-social-usd">&nbsp<span class="ion-forward">&nbsp<span class="ion-person"><br>Pasar crédito a otro usuario</button>
+		</div>
+	</div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,88 @@
+<ion-view view-title="Historial">
+    <ion-content>
+
+		<div class="historial-text">
+
+			<div class="row margin-0 padding-t-b-0">
+				<div class="col margin-0 padding-t-b-0">
+					<button class="button button-block button-stable margin-0 padding-t-b-0" style="font-size:10px; line-height: 12px;" ng-click="actualizaListaHistorial('mis recargas')"><b>Mis Recargas</b></button>
+				</div>
+			</div>
+			<div class="row margin-0 padding-t-b-0">
+				<div class="col margin-0 padding-t-b-0">
+					<button class="button button-block button-stable margin-0 padding-t-b-0" style="font-size:10px; line-height: 12px;" ng-click="actualizaListaHistorial('mis transferencias enviadas')"><b>Mis Transferencias Enviadas</b></button>
+				</div>
+			</div>			
+			<div class="row margin-0 padding-t-b-0">
+				<div class="col margin-0 padding-t-b-0">
+					<button class="button button-block button-stable margin-0 padding-t-b-0" style="font-size:10px; line-height: 12px;" ng-click="actualizaListaHistorial('mis transferencias recibidas')"><b>Mis Transferencias Recibidas</b></button>
+				</div>
+			</div>			
+
+		</div>
+		<br>
+		<div class="historial-title">
+
+			<div class="historial-sub-title">
+				<h5>{{actualizaListaHistorialData.reporte}}</h5>
+			</div>
+
+			<div class="col" style="padding:1px; align-content: middle; margin-top:10px;">
+	          <label class="item item-input" style="width:100%;">
+	            <i class="icon ion-search placeholder-icon"></i>
+	            <input type="search" placeholder="Buscar en el listado" ng-model="searchQuery"/>
+	          </label>
+	        </div>
+
+	    </div>
+
+	    <ion-list>
+
+	     	<ion-item ng-repeat="item in listaHistorial | filter: searchQuery" class="item item-remove-animate">
+			    
+			    <!-- SOLO PARA REPORTE DE MIS RECARGAS -->
+				<div class="row" style="padding:0px; margin:0px;" ng-show="chkReportes.misRecargas">
+			      	<div class="col col-50" style="text-align:left; padding:0px 20px 0px 20px; margin:0px;">
+			      		<span style="font-size:10px;"><b>Fecha:</b></span>
+			      		<h5>{{item.fecha}}</h5>
+			      		<span style="font-size:10px;"><b>Dispositivo:</b></span>
+			      		<h5>{{item.dispositivo}}</h5>
+			      	</div>
+			      	<div class="col col-50" style="text-align:left; padding:0px 20px 0px 20px; margin:0px;">
+			      		<span style="font-size:10px;"><b>Importe:</b></span>
+			      		<h2>${{item.credito}}</h2>		 
+			      	</div>
+			    </div>
+			    
+			    <!-- SOLO PARA REPORTE MIS TANSFERENCIAS ENVIADAS-->
+				<div class="row" style="padding:0px; margin:0px;" ng-show="chkReportes.misTransferenciasEnviadas">
+			      	<div class="col col-50" style="text-align:left; padding:0px 20px 0px 20px; margin:0px;">
+			      		<span style="font-size:10px;"><b>Fecha:</b></span>
+			      		<h5>{{item.fecha}}</h5>
+			      		<span style="font-size:10px;"><b>Usuario Receptor:</b></span>
+			      		<h5>{{item.mail}}</h5>	      		
+			      	</div>
+			      	<div class="col col-50" style="text-align:left; padding:0px 20px 0px 20px; margin:0px;">
+			      		<span style="font-size:10px;"><b>Importe:</b></span>
+			      		<h2>${{item.importe}}</h2>		 
+			      	</div>
+			    </div>
+			    
+			    <!-- SOLO PARA REPORTE MIS TANSFERENCIAS RECIBIDAS-->
+				<div class="row" style="padding:0px; margin:0px;" ng-show="chkReportes.misTransferenciasRecibidas">
+			      	<div class="col col-50" style="text-align:left; padding:0px 20px 0px 20px; margin:0px;">
+			      		<span style="font-size:10px;"><b>Fecha:</b></span>
+			      		<h5>{{item.fecha}}</h5>
+			      		<span style="font-size:10px;"><b>Usuario Emisor:</b></span>
+			      		<h5>{{item.mail}}</h5>	      		
+			      	</div>
+			      	<div class="col col-50" style="text-align:left; padding:0px 20px 0px 20px; margin:0px;">
+			      		<span style="font-size:10px;"><b>Importe:</b></span>
+			      		<h2>${{item.importe}}</h2>		 
+			      	</div>
+			    </div>
+			    
+	      	</ion-item>
+	    </ion-list>
+  	</ion-content>
+</ion-view>
