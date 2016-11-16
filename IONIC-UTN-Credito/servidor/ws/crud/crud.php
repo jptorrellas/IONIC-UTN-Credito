@@ -94,12 +94,7 @@ class Crud extends DBConnection
 			$conn = parent::connectBD();
 
 			// PREPARACION DEL QUERY
-			$sql = "SELECT $campos FROM $tabla";
-			
-			if($condiciones != null) {
-				$sql.=	" WHERE $condiciones";
-			}
-			
+			$sql = "SELECT $campos FROM $tabla WHERE $condiciones";
 			$q = $conn->prepare($sql);
 
 			// EJECUCION DEL QUERY
@@ -125,7 +120,7 @@ class Crud extends DBConnection
 	* @param string $condiciones
 	* @return object | null | false
 	*/
-	public function selectList($tabla, $campos, $condiciones=null)
+	public function selectList($tabla, $campos, $condiciones)
 	{
 		// Protege de SQL injection
 		if ($this->protectQuery([$tabla, $campos, $condiciones])) {
@@ -133,12 +128,7 @@ class Crud extends DBConnection
 			$conn = parent::connectBD();
 
 			// PREPARACION DEL QUERY
-			$sql = "SELECT $campos FROM $tabla";
-			
-			if($condiciones != null) {
-				$sql.=	" WHERE $condiciones";
-			}
-
+			$sql = "SELECT $campos FROM $tabla WHERE $condiciones";
 			$q = $conn->prepare($sql);
 
 			// EJECUCION DEL QUERY
@@ -164,20 +154,15 @@ class Crud extends DBConnection
 	* @param string $condiciones
 	* @return object | null | false
 	*/
-	public function selectJoin($campos, $tabla1, $tabla2, $condiciones=null)
+	public function selectJoin($campos, $tabla1, $tabla2, $condiciones)
 	{
 		// Protege de SQL injection
-		if ($this->protectQuery([$campos, $tabla1, $tabla2, $condiciones])) {
+		if ($this->protectQuery([$tabla, $campos, $condiciones])) {
 			// Conexión a BD
 			$conn = parent::connectBD();
 
 			// PREPARACION DEL QUERY
-			$sql = "SELECT $campos FROM $tabla1 JOIN $tabla2";
-
-			if($condiciones != null) {
-				$sql.=	" ON $condiciones";
-			}
-			
+			$sql = "SELECT $campos FROM $tabla1 JOIN $tabla2 ON $condiciones";
 			$q = $conn->prepare($sql);
 
 			// EJECUCION DEL QUERY
@@ -202,20 +187,15 @@ class Crud extends DBConnection
 	* @param string $condiciones
 	* @return true | false
 	*/
-	public function update($tabla, $camposYvalores, $condiciones=null)
+	public function update($tabla, $camposYvalores, $condiciones)
 	{
 		// Protege de SQL injection
-		if ($this->protectQuery([$tabla, $camposYvalores, $condiciones])) {
+		if ($this->protectQuery([$tabla, $campos, $condiciones])) {
 			// Conexión a BD
 			$conn = parent::connectBD();
 
 			// Preparación del query
-			$sql = "UPDATE $tabla SET $camposYvalores";
-
-			if($condiciones != null) {
-				$sql.=	" WHERE $condiciones";
-			}
-
+			$sql = "UPDATE $tabla SET $camposYvalores WHERE $condiciones";
 			$q = $conn->prepare($sql);
 
 			// Ejecución del query
@@ -239,20 +219,15 @@ class Crud extends DBConnection
 	* @param string $condiciones
 	* @return true | false
 	*/
-	public function delete($tabla, $condiciones=null)
+	public function delete($tabla, $condiciones)
 	{
 		// Protege de SQL injection
-		if ($this->protectQuery([$tabla, $condiciones])) {
+		if ($this->protectQuery([$tabla, $campos, $condiciones])) {
 			// Conexión a BD
 			$conn = parent::connectBD();
 
 			// Preparación del query
-			$sql = "DELETE FROM $tabla";
-
-			if($condiciones != null) {
-				$sql.=	" WHERE $condiciones";
-			}
-			
+			$sql = "DELETE FROM $tabla WHERE $condiciones";
 			$q = $conn->prepare($sql);
 
 			// Ejecución del query
